@@ -1,0 +1,26 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "0.1.0",
+    "command": "cmd",
+    "isShellCommand": true,
+    "args": ["/C"],
+    "showOutput": "always",
+    "echoCommand": false,
+    "suppressTaskName": true,
+    "tasks": [
+        {
+            "taskName": "clean",
+            "args": ["@IF EXIST .\\__pycache__\\ (@RD /Q /S __pycache__) &&  DEL /Q /S tags"]
+        },
+        {
+            "taskName": "runfile",
+            "isBuildCommand": true,
+            "args": ["${config.python.pythonPath} ${file}"]
+        },
+        {
+            "taskName": "runproject",
+            "args": ["CALL run.bat"]
+        }
+    ]
+}
